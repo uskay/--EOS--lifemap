@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/css/lifemap.css"/>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&language=en"></script>
+<script type="text/javascript" src="lib/js/GoogleMapsController.js"></script>
+<script type="text/javascript" src="lib/js/lifemap.js"></script>
+</head>
+<body>
+<!-- Menu Bar Start -->
+<div id="dMenuBar">
+	<div style="width:800px">
+		<div class="cMenuItem">   </div>
+		<div id="dIntroduction" class="cMenuItem classHover" onclick="javascript:reload()">Introduction</div>
+		<div id="dBirth" class="cMenuItem classHover" onclick="javascript:clickBirth()">Birth</div>
+		<div id="dElementary" class="cMenuItem classHover" onclick="javascript:clickElementary()">Elementary</div>
+		<div id="dHighschool" class="cMenuItem classHover" onclick="javascript:clickHighSchool()">Junior high / High school</div>
+		<div id="dUniversity" class="cMenuItem classHover" onclick="javascript:clickUniversity()">University</div>
+		<div id="dCareer" class="cMenuItem classHover" onclick="javascript:clickCareer()">Career</div>
+		<div id="dWorks" class="cMenuItem classHover" onclick="javascript:clickWorks()">Works</div>
+	</div>
+</div>
+<!-- Menu Bar End -->
+
+<!-- Message Bar Start -->
+<div id="dMessageBar">
+	<img id="iLogo" src="lib/img/Lifemap2.png" onclick="javascript:reload()">
+	<div id="dMessageBox">
+		<div id="dLabel">Offer me a job!</div>
+		<input id="iptMessageBox" placeholder="Or you could always post a message if interested." type="text">
+	</div>	
+	<div id="dPost" onclick="javascript:postOffers()"><img src="lib/img/im.png" height="25"></div>
+	<div id="dShareWrapper" onclick="javascript:showAbout();">
+		<div id="dShare">Welcome!</div>
+		<div id="dThumbNail"></div>
+		<div id="dThumbNailArrow" class="arrowFD"></div>
+	</div>
+</div>	
+
+<div id="dAboutWrapper">
+	<div class="arrowFU"></div>
+	<div id="dAboutUpperBox">
+		<div style="float:left;margin-top:20px;margin-left:20px;">
+			<img src="https://lh5.googleusercontent.com/-T0P5o-nf5G8/AAAAAAAAAAI/AAAAAAAAAAA/Ojx7haQyx48/s96-c/photo.jpg">
+		</div>
+		<div style="float:left;margin-top:20px;margin-left:20px;">
+			<div style="font-color:#000007;font-weight:bold;font-size:9.0pt;">Yusuke Utsunomiya</div>
+			<div style="font-color:#6F666A;font-size:9.0pt;color:#666;margin-top:4px;">uskay23@gmail.com</div>
+			<div style="font-color:#6F666A;font-size:9.0pt;color:#444;margin-top:10px;width:250px;">
+				Hello. I am Yusuke Utsunomiya, an App Engineer in Tokyo. Looking for fun and exciting projects all around the world. Please message me if interested. 
+			</div>
+		</div>
+	</div>
+	<div id="dAboutLowerBox" class="clearfix">
+		<div style="float:left;">
+			<a href="http://plus.google.com/102687903017702576897?prsrc=3" target="_blank" rel="publisher" style="text-decoration:none;">
+				<img src="http://ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:30px;height:30px;position:relative;top:10px;margin-left:20px;"/></a>
+			<a href="http://www.facebook.com/yusuke.utsunomiya.9" target="_blank" rel="publisher" style="text-decoration:none;">
+				<img src="lib/img/f_logo.png" height="30" style="-moz-border-radius: 3px;-webkit-border-radius: 3px;position:relative;top:10px;"></a>
+			<a href="https://twitter.com/uskay" target="_blank" rel="publisher" style="text-decoration:none;">
+				<img src="lib/img/t_logo.png" height="30" style="-moz-border-radius: 3px;-webkit-border-radius: 3px;position:relative;top:10px;"></a>
+			<a href="http://www.linkedin.com/profile/view?id=120608901&trk=hb_tab_pro_top" target="_blank" rel="publisher" style="text-decoration:none;">
+			<img src="lib/img/l_logo.png" height="30" style="-moz-border-radius: 3px;-webkit-border-radius: 3px;position:relative;top:10px;"></a>
+		</div>
+		<div style="float:right">
+			<div id="dLogout" style="position:relative;top:10px;x;margin-right:20px;" onclick="javascript:logout();">
+				<span style="postion:relative;line-height:2.0;">Logout</span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Message Bar End -->
+
+<!-- Map Start -->
+<div id="dMapCanvas"></div>
+<!-- Map End -->
+
+<!-- SideBar Start -->
+<div id="dSideBarOpener" style="cursor:pointer" onclick="javascript:slideRight()">
+	<span class="arrowFR2"></span>
+</div>
+<div id="dSideBar">
+	<div id="dMessageWrapper">
+		<div id="dMessageBubbleWrapper">
+			<div class="arrowFU_messenger"></div>
+			<div id="dMessageBubble" style="width:70px;height:28px;position:absolute;background-color:#2D2D2D;z-index:105;top:35px;right:40px;font-size:9.0pt;padding:5px;text-align:center;color:#FFFFFF">
+				Direct Message
+			</div>
+		</div>
+		<div id="dMessageTitle" class="clearfix">
+			<div style="margin-left:10px">
+				<span style="float:left;font-size:9.5pt"><b>Messenger</b> prototype</span>				
+				<span style="float:right;cursor:pointer" class="arrowFL" onclick="javascript:slideLeft()"></span>
+				<span id="sRefresh" style="float:right;position:relative;right:25px;cursor:pointer" onclick="javascript:refresh(0)"><img src="lib/img/refresh.png" height="15"></span>
+				<span id="sUser" style="float:right;position:relative;right:32px;cursor:pointer" onclick="javascript:refresh(1)"><img src="lib/img/you.png" height="15"></span>
+				<span id="sDM" style="float:right;position:relative;right:40px;margin-top:0.5	px;cursor:pointer" onclick="javascript:showDM();"><img src="lib/img/dm.png" height="15"></span>
+			</div>
+		</div>
+		<div id="dMessages" lastChild=""></div>
+	</div>
+</div>
+<!-- SideBar End -->
+
+<!-- LightBox Start -->
+<div id="dLightBox">
+<div id="dWelcomeMessage"></div>
+<div id="dLogin" onclick="javascript:login()">Login via Google</div>
+<div id="dStart" onclick="javascript:start()">START</div>	
+</div>
+<div id="dLightBox4Works">
+	<div id="dMyWorks" style="width:780px;text-align:center;margin:10px auto;">
+
+	</div>
+	<div id="dClose" onclick="javascript:clickClose()">Close</div>	
+</div>
+<div id="dLightBoxBackground"></div>
+<!-- LightBox End -->
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/css/lifemap.css"/>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&language=en"></script>
+<script type="text/javascript" src="lib/js/GoogleMapsController.js"></script>
+<script>
+$(document).ready(function(){
+	//init GoogleMapsController
+	var controller = new GoogleMapsController();
+	controller.init(new google.maps.LatLng(34.86113,138.229895), 2);
+	windowResize();
+	setTimeout("replaceToTop()", 2500);
+});
+$(window).resize(function() {
+	windowResize();
+});
+function windowResize(){
+	$("#dMapCanvas").css("height", window.innerHeight);
+	var lightBoxWidth = $("#dLightBox").width();
+	var lightBoxHeight = $("#dLightBox").height();
+	$("#dLightBox").css("margin-left", -(lightBoxWidth/2));
+	$("#dLightBox").css("margin-top", -(lightBoxHeight/2));
+	$("#dLightBox").css("top", "50%");
+	$("#dLightBox").css("left", "50%");
+	$("#dLightBoxBackground").css("height", document.documentElement.scrollHeight);
+	$("#dLightBoxBackground").css("width", document.documentElement.scrollWidth);
+}
+function replaceToTop(){
+	location.replace("http://maps.yusukeutsunomiya.com");
+}
+</script>
+</head>
+<body>
+<!-- Map Start -->
+<div id="dMapCanvas"></div>
+<!-- Map End -->
+<!-- LightBox Start -->
+<div id="dLightBox">
+<div id="dWelcomeMessage">
+	<br><img src='lib/img/Lifemap.png' align='center' height='80'>
+	<br>
+	<b>There is something wrong going on.</b><br>
+	Please come back later.
+</div>
+</div>
+<div id="dLightBoxBackground"></div>
+<!-- LightBox End -->
+
+</body>
+</html>
