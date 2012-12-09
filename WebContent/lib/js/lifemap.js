@@ -267,7 +267,7 @@ var isEnter4Comment = false;
 		var lifemap = new Array(5);
 		lifemap[0] = "lib/img/lifemapapp.png";
 		lifemap[1] = "APP";
-		lifemap[2] = "http://maps.yusukeutsunomiya.jp";
+		lifemap[2] = "http://maps.yusukeutsunomiya.com";
 		lifemap[3] = "Lifemap";
 		lifemap[4] = "Life tracking app(prototype) built from scratch using Google Map.";
 		//allday
