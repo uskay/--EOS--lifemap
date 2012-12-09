@@ -30,7 +30,7 @@ var isEnter4Comment = false;
 			} else {
 				isEnter4Offer = false;
 			}
-		});		
+		});
 		$(".classHover").live({
 			mouseenter: function(){
 				if($(this).css("opacity")<="0.9"){
