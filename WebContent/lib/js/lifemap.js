@@ -269,7 +269,7 @@ var isEnter4Comment = false;
 		lifemap[1] = "APP";
 		lifemap[2] = "http://maps.yusukeutsunomiya.jp";
 		lifemap[3] = "Lifemap";
-		lifemap[4] = "Life tacking app(prototype) built from scratch using Google Map.";
+		lifemap[4] = "Life tracking app(prototype) built from scratch using Google Map.";
 		//allday
 		var allday = new Array(5);
 		allday[0] = "lib/img/allday.jpg";
